@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <style>
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .modal input[type="password"],
+        .modal input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <h2>Enter Password</h2>
+            <form id="passwordForm">
+                <input type="text" id="usernameInput" placeholder="Username" class="hidden" autocomplete="username">
+                <input type="password" id="passwordInput" placeholder="Password" autocomplete="new-password">
+                <button type="submit" id="submitPasswordBtn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="admin-container" style="display: none;">
+        <h1>Админ панель</h1>
+
+        <!-- Форма для добавления новостей и мероприятий -->
+        <form id="addContentForm" class="admin-form" enctype="multipart/form-data">
+            <label for="contentType">Тип контента:</label>
+            <select id="contentType" name="contentType">
+                <option value="news">Новость</option>
+                <option value="events">Мероприятие</option>
+            </select><br>
+            <label for="contentTitle">Заголовок:</label><br>
+            <input type="text" id="contentTitle" name="contentTitle"><br>
+            <label for="contentDescription">Описание:</label><br>
+            <textarea id="contentDescription" name="contentDescription"></textarea><br>
+            <label for="contentPhoto">Фото:</label><br>
+            <input type="file" id="contentPhoto" name="contentPhoto"><br><br>
+            <button type="submit">Добавить</button>
+        </form>
+
+        <!-- Форма для удаления новостей и мероприятий -->
+        <form id="deleteContentForm" class="admin-form">
+            <label for="deleteContentType">Тип контента:</label>
+            <select id="deleteContentType" name="deleteContentType">
+                <option value="news">Новость</option>
+                <option value="events">Мероприятие</option>
+            </select><br>
+            <label for="contentId">ID контента:</label><br>
+            <input type="text" id="contentId" name="contentId"><br><br>
+            <button type="submit">Удалить</button>
+        </form>
+
+        <!-- Кнопки для получения списка новостей и мероприятий -->
+        <div class="button-group">
+            <button id="getAllNewsBtn">Получить все новости</button>
+            <button id="getAllEventsBtn">Получить все мероприятия</button>
+        </div>
+    </div>
+
+    <script src="./js/admin.js"></script>
+    
+</body>
+
+</html>

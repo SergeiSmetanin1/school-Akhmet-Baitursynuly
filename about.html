@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/x-icon" href="./images/emblem.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <title>О нас</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-header">
+                <a href="/">
+                    <img src="images/emblem.png" alt="Герб Казахстана" draggable="false">
+                    <h1 data-i18n="title">КГУ «Опорная школа (ресурсный центр) имени Ахмета Байтурсынулы»</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a data-i18n="about" class="open-hage">О нас</a></li>
+                    <li><a data-i18n="education" href="education">Образование</a></li>
+                    <li><a data-i18n="news" href="news">Новости</a></li>
+                    <li><a data-i18n="events" href="events">Мероприятия</a></li>
+                    <li><a data-i18n="contacts" href="contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <a href="" class="russian" id="russian-btn">Ru</a>
+                <a href="" class="english" id="english-btn">Kz</a>
+            </div>
+            <div class="burger-menu hide">
+                <svg id="burger-menu" class="ham hamRotate ham1" viewBox="0 0 100 100" width="80"
+                    onclick="this.classList.toggle('active')">
+                    <path class="line top"
+                        d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                    <path class="line middle" d="m 30,50 h 40" />
+                    <path class="line bottom"
+                        d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+                </svg>
+            </div>
+        </div>
+        <nav class="mobile-nav">
+            <ul class="mobile-menu">
+                <li><a data-i18n="about" href="about">О нас</a></li>
+                <li><a data-i18n="education" href="education">Образование</a></li>
+                <li><a data-i18n="news" href="news">Новости</a></li>
+                <li><a data-i18n="events" href="events">Мероприятия</a></li>
+                <li><a data-i18n="contacts" href="contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="section-about">
+            <div class="container container-about">
+                <h1 data-i18n="about">О нас</h1>
+                <div class="card-about">
+                    <p data-i18n="about_desc">Школа имени Ахмета Байтурсынова была основана с целью создания образовательного учреждения,
+                        которое бы не только предоставляло отличное академическое образование, но и способствовало
+                        развитию культурного и духовного наследия казахского народа. Мы гордимся своей богатой историей
+                        и традициями, которые вдохновляют нас каждый день.</p>
+                </div>
+                <h2 data-i18n="support_school">Опорная школа, что это значит?</h2>
+                <div class="card-about">
+                    <p data-i18n="support_school__deck">Oпорная школа (ресурсный центр) - организация общего среднего образования, на базе которой
+                        консолидируются образовательные ресурсы близлежащих малокомплектных школ для проведения
+                        краткосрочных сессионных занятий и промежуточной и итоговой аттестации обучающихся в целях
+                        обеспечения доступа к качественному образованию учащимся малокомплектных школ;</p>
+                </div>
+            </div>
+        </section>
+        <section class="section-our-team">
+            <div class="container container-team">
+                <div class="columns-team">
+                    <div class="column left-column">
+                        <h2 data-i18n="our_team">Наша команда</h2>
+                        <div class="card-team _animation-items">
+                            <div class="teacher-info">
+                                <div class="teacher-photo"><img
+                                        src="https://polinka.top/uploads/posts/2023-06/1686149520_polinka-top-p-kartinki-znamenitikh-lyudei-pinterest-37.jpg"
+                                        alt=""></div>
+                                <div>
+                                    <h4>Питт Бред</h4>
+                                    <p>Должность: <span>Директор</span></p>
+                                </div>
+                            </div>
+                            <p>«Там, где я вырос, алкоголизм, наркотики, вообще так называемое дурное поведение были
+                                признаками слабости. И все чудовищно боялись показаться слабыми. А тут, в Лос-Анджелесе,
+                                ранее неприемлемое оказалось чуть ли не нормой. Мне пришлось научиться никого не
+                                осуждать.»</p>
+                            <div class="circle-card-tiam"></div>
+                        </div>
+                        <div class="card-team _animation-items">
+                            <div class="teacher-info">
+                                <div class="teacher-photo"><img
+                                        src="https://polnajmoda.ru/wp-content/uploads/dzhejson-stejtem-biografiya-videoblog-foto-novosti-2020-dzhejson-stethem-rost.jpg"
+                                        alt=""></div>
+                                <div>
+                                    <h4>Джейсон Стэйтем</h4>
+                                    <p>Должность: <span>Физрук</span></p>
+                                </div>
+                            </div>
+                            <p>«Могучие мышцы хороши, чтобы красоваться перед зеркалом. Мне нужно тело, чтобы бегать,
+                                плавать и драться.»</p>
+                            <div class="circle-card-tiam"></div>
+                        </div>
+                        <div class="card-team _animation-items">
+                            <div class="teacher-info">
+                                <div class="teacher-photo"><img src="./images/photo_5361959815573791910_x.jpg" alt="">
+                                </div>
+                                <div>
+                                    <h4>Илон Макс</h4>
+                                    <p>Должность: <span>Учитель информатики</span></p>
+                                </div>
+                            </div>
+                            <p>«Как тебе такое, Илон Макс?»</p>
+                            <div class="circle-card-tiam"></div>
+                        </div>
+                    </div>
+                    <div class="column right-column">
+                        <div class="card-team">
+                            <div class="teacher-info">
+                                <div class="teacher-photo"><img
+                                        src="https://cdn.oboi7.com/f5bf99fd4116c4ac180c0481eca8232b80ac13d5/devushki-andzhelina-dzholi-lica.jpg"
+                                        alt=""></div>
+                                <div>
+                                    <h4>Анджелина Джоли</h4>
+                                    <p>Должность: <span>Завуч</span></p>
+                                </div>
+                            </div>
+                            <p>«Образование — это мощный инструмент. Оно дает детям возможность узнать свои права и
+                                защищать их, а также менять свои жизни и жизни своих семей. Мы должны вдохновлять и
+                                поддерживать наших детей в их стремлении к знаниям, потому что именно через образование
+                                они смогут изменить мир к лучшему.»</p>
+                            <div class="circle-card-tiam"></div>
+                        </div>
+                        <div class="card-team">
+                            <div class="teacher-info">
+                                <div class="teacher-photo"><img src="https://filmnavi.ru/images/person/6149/6148096.jpg"
+                                        alt=""></div>
+                                <div>
+                                    <h4>Мария Чжан</h4>
+                                    <p>Должность: <span>Учитель химии</span></p>
+                                </div>
+                            </div>
+                            <p>«Знаешь, Аанг, люди разные, но они все делятся на два типа: те, кто считает, что все люди
+                                разные, и те, кто считает, что все люди одинаковы.»</p>
+                            <div class="circle-card-tiam"></div>
+                        </div>
+                        <div class="card-team">
+                            <div class="teacher-info">
+                                <div class="teacher-photo"><img src="images/photo_5361696903445734865_x.jpg" alt="">
+                                </div>
+                                <div>
+                                    <h4>Кира Найтли</h4>
+                                    <p>Должность: <span>Учитель географии</span></p>
+                                </div>
+                            </div>
+                            <p>«Я не очень общительное существо.»</p>
+                            <div class="circle-card-tiam"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <h2 data-i18n="title">КГУ «Опорная школа (ресурсный центр) имени Ахмета Байтурсынулы»</h2>
+            <nav>
+                <ul>
+                    <li><a href="about.html" data-i18n="about">О нас</a></li>
+                    <li><a href="contacts.html" data-i18n="contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/about.js"></script>
+</body>
+
+</html>
