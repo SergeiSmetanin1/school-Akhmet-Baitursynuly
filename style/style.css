@@ -1657,6 +1657,10 @@ main {
     .container-contacts {
         flex-direction: column;
     }
+
+    .container-news-details {
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 640px) {
