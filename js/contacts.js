@@ -13,5 +13,4 @@ function initMap() {
         title: "School location"
     });
 }
-
 window.initMap = initMap;
