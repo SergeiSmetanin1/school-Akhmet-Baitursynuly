@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 body: formData
             });
+
+            if (!uploadResponse.ok) {
+                const errorText = await uploadResponse.text();
+                throw new Error(`Upload failed: ${uploadResponse.statusText} - ${errorText}`);
+            }
+
             const uploadData = await uploadResponse.json();
 
             const photoUrl = uploadData.photoUrl;
@@ -49,11 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({ title, description, photoUrl })
             });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Submit failed: ${response.statusText} - ${errorText}`);
+            }
+
             const data = await response.json();
             console.log(data);
             alert(data.message);
         } catch (error) {
             console.error('Error:', error);
+            alert(`Error: ${error.message}`);
         }
     });
 

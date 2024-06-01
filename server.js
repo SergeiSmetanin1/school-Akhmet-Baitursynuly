@@ -18,6 +18,20 @@ mongoose.connect(process.env.MONGODB_URI)
         console.error('Failed to connect to MongoDB', err);
     });
 
+// Middleware для обработки JSON
+app.use(express.json());
+
+// Middleware для разрешения CORS
+app.use(cors());
+
+// Устанавливаем статические файлы
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, '')));
+
+const currentPath = (page) => {
+    return path.resolve(__dirname, `${page}.html`);
+};
+
 // Модель данных для новостей
 const News = mongoose.model('News', {
     title: String,
@@ -52,20 +66,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
-// Middleware для обработки JSON
-app.use(express.json());
-
-// Middleware для разрешения CORS
-app.use(cors());
-
-// Устанавливаем статические файлы
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(express.static(path.join(__dirname, '')));
-
-const currentPath = (page) => {
-    return path.resolve(__dirname, `${page}.html`);
-};
 
 // Обработка маршрутов
 app.get(['/', '/index', '/home'], (req, res) => {
@@ -103,7 +103,7 @@ app.get('/admin', (req, res) => {
 // Маршрут для загрузки файлов
 app.post('/upload', upload.single('photo'), (req, res) => {
     if (!req.file) {
-        return res.status(400).send('No file uploaded.');
+        return res.status(400).json({ error: 'No file uploaded.' });
     }
     res.status(201).json({
         message: 'File uploaded successfully',
@@ -191,6 +191,12 @@ app.delete('/events/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
+});
+
+// Middleware для обработки ошибок
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 app.listen(PORT, () => {
