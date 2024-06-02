@@ -49,10 +49,7 @@ const Event = mongoose.model('Event', {
     title: String,
     description: String,
     photoUrl: String,
-    date: {
-        type: Date,
-        default: Date.now
-    }
+    date: Date
 });
 
 // Настройка multer для хранения файлов
@@ -126,10 +123,10 @@ app.post('/news', async (req, res) => {
 
 // Добавление мероприятия
 app.post('/events', async (req, res) => {
-    const { title, description, photoUrl } = req.body;
+    const { title, description, photoUrl, date } = req.body;
 
     try {
-        const event = new Event({ title, description, photoUrl });
+        const event = new Event({ title, description, photoUrl, date });
         await event.save();
         res.status(201).json({ message: 'Мероприятие успешно добавлено' });
     } catch (err) {

@@ -38,7 +38,7 @@ async function renderEvents() {
             </div>
         `;
 
-        eventsContainer.insertAdjacentHTML('beforeend', eventCardHTML);
+        eventsContainer.insertAdjacentHTML('afterbegin', eventCardHTML);
     });
 }
 

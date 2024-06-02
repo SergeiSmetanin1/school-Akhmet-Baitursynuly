@@ -26,41 +26,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const contentType = document.getElementById('contentType').value;
         const title = document.getElementById('contentTitle').value;
         const description = document.getElementById('contentDescription').value;
+        const contentDate = document.getElementById('contentDate').value;
         const contentPhoto = document.getElementById('contentPhoto').files[0];
-
+    
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
         formData.append('photo', contentPhoto);
-
+    
+        if (contentType === 'events') {
+            formData.append('date', contentDate);
+        }
+    
         try {
             const uploadResponse = await fetch('/upload', {
                 method: 'POST',
                 body: formData
             });
-
+    
             if (!uploadResponse.ok) {
                 const errorText = await uploadResponse.text();
                 throw new Error(`Upload failed: ${uploadResponse.statusText} - ${errorText}`);
             }
-
+    
             const uploadData = await uploadResponse.json();
-
+    
             const photoUrl = uploadData.photoUrl;
-
+    
             const response = await fetch(`/${contentType}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ title, description, photoUrl })
+                body: JSON.stringify({ title, description, photoUrl, date: contentDate })
             });
-
+    
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(`Submit failed: ${response.statusText} - ${errorText}`);
             }
-
+    
             const data = await response.json();
             console.log(data);
             alert(data.message);
@@ -69,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`Error: ${error.message}`);
         }
     });
+    
 
     document.getElementById('deleteContentForm').addEventListener('submit', async (e) => {
         e.preventDefault();
