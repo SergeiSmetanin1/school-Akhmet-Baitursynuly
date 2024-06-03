@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" type="image/x-icon" href="./images/emblem.png">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <title>О нас</title>
 </head>
@@ -21,7 +23,7 @@
             </div>
             <nav class="main-nav">
                 <ul class="nav-menu">
-                    <li><a data-i18n="about" class="open-hage">О нас</a></li>
+                    <li><a data-i18n="about" class="open-page">О нас</a></li>
                     <li><a data-i18n="education" href="education">Образование</a></li>
                     <li><a data-i18n="news" href="news">Новости</a></li>
                     <li><a data-i18n="events" href="events">Мероприятия</a></li>
@@ -55,17 +57,17 @@
     </header>
     <main>
         <section class="section-about">
-            <div class="container container-about">
-                <h1 data-i18n="about">О нас</h1>
-                <div class="card-about">
+            <div class="container container-about" >
+                <h1 data-i18n="about" data-aos="fade-left">О нас</h1>
+                <div class="card-about" data-aos="fade-left">
                     <p data-i18n="about_desc">Школа имени Ахмета Байтурсынова была основана с целью создания
                         образовательного учреждения,
                         которое бы не только предоставляло отличное академическое образование, но и способствовало
                         развитию культурного и духовного наследия казахского народа. Мы гордимся своей богатой историей
                         и традициями, которые вдохновляют нас каждый день.</p>
                 </div>
-                <h2 data-i18n="support_school">Опорная школа, что это значит?</h2>
-                <div class="card-about">
+                <h2 data-i18n="support_school" data-aos="fade-left">Опорная школа, что это значит?</h2>
+                <div class="card-about" data-aos="fade-left">
                     <p data-i18n="support_school__deck">Oпорная школа (ресурсный центр) - организация общего среднего
                         образования, на базе которой
                         консолидируются образовательные ресурсы близлежащих малокомплектных школ для проведения
@@ -115,90 +117,111 @@
                 </div>
                 <div class="columns-team">
                     <div class="column left-column">
-                        <div class="card-team _animation-items">
-                            <div class="teacher-info">
-                                <div class="teacher-photo"><img
-                                        src="https://polinka.top/uploads/posts/2023-06/1686149520_polinka-top-p-kartinki-znamenitikh-lyudei-pinterest-37.jpg"
-                                        alt=""></div>
-                                <div>
-                                    <h4>Питт Бред</h4>
-                                    <p>Должность: <span>Директор</span></p>
+                        <div style="position: relative;" data-aos="fade-right">
+                            <div class="bg-card"></div>
+                            <div class="card-team _animation-items">
+                                <div class="teacher-info">
+                                    <div class="teacher-photo"><img
+                                            src="https://polinka.top/uploads/posts/2023-06/1686149520_polinka-top-p-kartinki-znamenitikh-lyudei-pinterest-37.jpg"
+                                            alt=""></div>
+                                    <div>
+                                        <h4>Питт Бред</h4>
+                                        <p>Должность: <span>Директор</span></p>
+                                    </div>
                                 </div>
+                                <p>«Там, где я вырос, алкоголизм, наркотики, вообще так называемое дурное поведение были
+                                    признаками слабости. И все чудовищно боялись показаться слабыми. А тут, в
+                                    Лос-Анджелесе,
+                                    ранее неприемлемое оказалось чуть ли не нормой. Мне пришлось научиться никого не
+                                    осуждать.»</p>
+                                <div class="circle-card-tiam"></div>
                             </div>
-                            <p>«Там, где я вырос, алкоголизм, наркотики, вообще так называемое дурное поведение были
-                                признаками слабости. И все чудовищно боялись показаться слабыми. А тут, в Лос-Анджелесе,
-                                ранее неприемлемое оказалось чуть ли не нормой. Мне пришлось научиться никого не
-                                осуждать.»</p>
-                            <div class="circle-card-tiam"></div>
                         </div>
-                        <div class="card-team _animation-items">
-                            <div class="teacher-info">
-                                <div class="teacher-photo"><img
-                                        src="https://polnajmoda.ru/wp-content/uploads/dzhejson-stejtem-biografiya-videoblog-foto-novosti-2020-dzhejson-stethem-rost.jpg"
-                                        alt=""></div>
-                                <div>
-                                    <h4>Джейсон Стэйтем</h4>
-                                    <p>Должность: <span>Физрук</span></p>
+                        <div style="position: relative;" data-aos="fade-right">
+                            <div class="bg-card"></div>
+                            <div class="card-team _animation-items">
+                                <div class="teacher-info">
+                                    <div class="teacher-photo"><img
+                                            src="https://polnajmoda.ru/wp-content/uploads/dzhejson-stejtem-biografiya-videoblog-foto-novosti-2020-dzhejson-stethem-rost.jpg"
+                                            alt=""></div>
+                                    <div>
+                                        <h4>Джейсон Стэйтем</h4>
+                                        <p>Должность: <span>Физрук</span></p>
+                                    </div>
                                 </div>
+                                <p>«Могучие мышцы хороши, чтобы красоваться перед зеркалом. Мне нужно тело, чтобы
+                                    бегать,
+                                    плавать и драться.»</p>
+                                <div class="circle-card-tiam"></div>
                             </div>
-                            <p>«Могучие мышцы хороши, чтобы красоваться перед зеркалом. Мне нужно тело, чтобы бегать,
-                                плавать и драться.»</p>
-                            <div class="circle-card-tiam"></div>
                         </div>
-                        <div class="card-team _animation-items">
-                            <div class="teacher-info">
-                                <div class="teacher-photo"><img src="./images/photo_5361959815573791910_x.jpg" alt="">
+                        <div style="position: relative;" data-aos="fade-right">
+                            <div class="bg-card"></div>
+                            <div class="card-team _animation-items">
+                                <div class="teacher-info">
+                                    <div class="teacher-photo"><img src="./images/photo_5361959815573791910_x.jpg"
+                                            alt="">
+                                    </div>
+                                    <div>
+                                        <h4>Илон Макс</h4>
+                                        <p>Должность: <span>Учитель информатики</span></p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4>Илон Макс</h4>
-                                    <p>Должность: <span>Учитель информатики</span></p>
-                                </div>
+                                <p>«Как тебе такое, Илон Макс?»</p>
+                                <div class="circle-card-tiam"></div>
                             </div>
-                            <p>«Как тебе такое, Илон Макс?»</p>
-                            <div class="circle-card-tiam"></div>
                         </div>
                     </div>
                     <div class="column right-column">
-                        <div class="card-team">
-                            <div class="teacher-info">
-                                <div class="teacher-photo"><img
-                                        src="https://cdn.oboi7.com/f5bf99fd4116c4ac180c0481eca8232b80ac13d5/devushki-andzhelina-dzholi-lica.jpg"
-                                        alt=""></div>
-                                <div>
-                                    <h4>Анджелина Джоли</h4>
-                                    <p>Должность: <span>Завуч</span></p>
+                        <div style="position: relative;" data-aos="fade-left">
+                            <div class="bg-card"></div>
+                            <div class="card-team">
+                                <div class="teacher-info">
+                                    <div class="teacher-photo"><img
+                                            src="https://cdn.oboi7.com/f5bf99fd4116c4ac180c0481eca8232b80ac13d5/devushki-andzhelina-dzholi-lica.jpg"
+                                            alt=""></div>
+                                    <div>
+                                        <h4>Анджелина Джоли</h4>
+                                        <p>Должность: <span>Завуч</span></p>
+                                    </div>
                                 </div>
+                                <p>«Образование — это мощный инструмент. Оно дает детям возможность узнать свои права и
+                                    защищать их, а также менять свои жизни и жизни своих семей. Мы должны вдохновлять и
+                                    поддерживать наших детей в их стремлении к знаниям, потому что именно через образование
+                                    они смогут изменить мир к лучшему.»</p>
+                                <div class="circle-card-tiam"></div>
                             </div>
-                            <p>«Образование — это мощный инструмент. Оно дает детям возможность узнать свои права и
-                                защищать их, а также менять свои жизни и жизни своих семей. Мы должны вдохновлять и
-                                поддерживать наших детей в их стремлении к знаниям, потому что именно через образование
-                                они смогут изменить мир к лучшему.»</p>
-                            <div class="circle-card-tiam"></div>
                         </div>
-                        <div class="card-team">
-                            <div class="teacher-info">
-                                <div class="teacher-photo"><img src="https://filmnavi.ru/images/person/6149/6148096.jpg"
-                                        alt=""></div>
-                                <div>
-                                    <h4>Мария Чжан</h4>
-                                    <p>Должность: <span>Учитель химии</span></p>
+                        <div style="position: relative;" data-aos="fade-left">
+                            <div class="bg-card"></div>
+                            <div class="card-team">
+                                <div class="teacher-info">
+                                    <div class="teacher-photo"><img src="https://filmnavi.ru/images/person/6149/6148096.jpg"
+                                            alt=""></div>
+                                    <div>
+                                        <h4>Мария Чжан</h4>
+                                        <p>Должность: <span>Учитель химии</span></p>
+                                    </div>
                                 </div>
+                                <p>«Знаешь, Аанг, люди разные, но они все делятся на два типа: те, кто считает, что все люди
+                                    разные, и те, кто считает, что все люди одинаковы.»</p>
+                                <div class="circle-card-tiam"></div>
                             </div>
-                            <p>«Знаешь, Аанг, люди разные, но они все делятся на два типа: те, кто считает, что все люди
-                                разные, и те, кто считает, что все люди одинаковы.»</p>
-                            <div class="circle-card-tiam"></div>
                         </div>
-                        <div class="card-team">
-                            <div class="teacher-info">
-                                <div class="teacher-photo"><img src="images/photo_5361696903445734865_x.jpg" alt="">
+                        <div style="position: relative;" data-aos="fade-left">
+                            <div class="bg-card"></div>
+                            <div class="card-team">
+                                <div class="teacher-info">
+                                    <div class="teacher-photo"><img src="images/photo_5361696903445734865_x.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <h4>Кира Найтли</h4>
+                                        <p>Должность: <span>Учитель географии</span></p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4>Кира Найтли</h4>
-                                    <p>Должность: <span>Учитель географии</span></p>
-                                </div>
+                                <p>«Я не очень общительное существо.»</p>
+                                <div class="circle-card-tiam"></div>
                             </div>
-                            <p>«Я не очень общительное существо.»</p>
-                            <div class="circle-card-tiam"></div>
                         </div>
                     </div>
                 </div>

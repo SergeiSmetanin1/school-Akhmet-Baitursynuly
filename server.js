@@ -9,7 +9,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// Подключение к MongoDB
+// Подключение к MongoDB без устаревших параметров
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('Connected to MongoDB');
@@ -37,7 +37,7 @@ const News = mongoose.model('News', {
     title: String,
     content: String,
     photoUrl: String,
-    description: String, // Добавлено поле для описания
+    description: String,
     date: {
         type: Date,
         default: Date.now

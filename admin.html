@@ -4,106 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <style>
-        /* Стили для модального окна */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 300px;
-            text-align: center;
-        }
-
-        .modal input[type="password"],
-        .modal input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        .modal button {
-            padding: 10px 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/x-icon" href="./images/emblem.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <title>Главная</title>
 </head>
 
 <body>
-    <div id="passwordModal" class="modal">
-        <div class="modal-content">
-            <h2>Enter Password</h2>
-            <form id="passwordForm">
-                <input type="text" id="usernameInput" placeholder="Username" class="hidden" autocomplete="username">
-                <input type="password" id="passwordInput" placeholder="Password" autocomplete="new-password">
-                <button type="submit" id="submitPasswordBtn">Submit</button>
-            </form>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-header">
+                <a href="/">
+                    <img src="images/emblem.png" alt="Герб Казахстана" draggable="false">
+                    <h1 data-i18n="title">КГУ «Опорная школа (ресурсный центр) имени Ахмета Байтурсынулы»</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a data-i18n="about" href="about">О нас</a></li>
+                    <li><a data-i18n="education" href="education">Образование</a></li>
+                    <li><a data-i18n="news" href="news">Новости</a></li>
+                    <li><a data-i18n="events" href="events">Мероприятия</a></li>
+                    <li><a data-i18n="contacts" href="contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <a href="" class="russian" id="russian-btn">Ru</a>
+                <a href="" class="english" id="english-btn">Kz</a>
+            </div>
+            <div class="burger-menu hide">
+                <svg id="burger-menu" class="ham hamRotate ham1" viewBox="0 0 100 100" width="80"
+                    onclick="this.classList.toggle('active')">
+                    <path class="line top"
+                        d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                    <path class="line middle" d="m 30,50 h 40" />
+                    <path class="line bottom"
+                        d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+                </svg>
+            </div>
         </div>
-    </div>
-
-    <div class="admin-container" style="display: none;">
-        <h1>Админ панель</h1>
-
-        <!-- Форма для добавления новостей и мероприятий -->
-        <form id="addContentForm" class="admin-form" enctype="multipart/form-data">
-            <label for="contentType">Тип контента:</label>
-            <select id="contentType" name="contentType">
-                <option value="news">Новость</option>
-                <option value="events">Мероприятие</option>
-            </select><br>
-            <label for="contentTitle">Заголовок:</label><br>
-            <input type="text" id="contentTitle" name="contentTitle"><br>
-            <label for="contentDescription">Описание:</label><br>
-            <textarea id="contentDescription" name="contentDescription"></textarea><br>
-            <label for="contentDate">Дата:</label><br>
-            <input type="datetime-local" id="contentDate" name="contentDate"><br>
-            <label for="contentPhoto">Фото:</label><br>
-            <input type="file" id="contentPhoto" name="contentPhoto"><br><br>
-            <button type="submit">Добавить</button>
-        </form>
-        
-
-        <!-- Форма для удаления новостей и мероприятий -->
-        <form id="deleteContentForm" class="admin-form">
-            <label for="deleteContentType">Тип контента:</label>
-            <select id="deleteContentType" name="deleteContentType">
-                <option value="news">Новость</option>
-                <option value="events">Мероприятие</option>
-            </select><br>
-            <label for="contentId">ID контента:</label><br>
-            <input type="text" id="contentId" name="contentId"><br><br>
-            <button type="submit">Удалить</button>
-        </form>
-
-        <!-- Кнопки для получения списка новостей и мероприятий -->
-        <div class="button-group">
-            <button id="getAllNewsBtn">Получить все новости</button>
-            <button id="getAllEventsBtn">Получить все мероприятия</button>
+        <nav class="mobile-nav">
+            <ul class="mobile-menu">
+                <li><a data-i18n="about" href="about">О нас</a></li>
+                <li><a data-i18n="education" href="education">Образование</a></li>
+                <li><a data-i18n="news" href="news">Новости</a></li>
+                <li><a data-i18n="events" href="events">Мероприятия</a></li>
+                <li><a data-i18n="contacts" href="contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="passwordModal" class="modal">
+            <div class="modal-content">
+                <h2>Enter Password</h2>
+                <form id="passwordForm">
+                    <input type="text" id="usernameInput" placeholder="Username" class="hide" autocomplete="username">
+                    <input type="password" id="passwordInput" placeholder="Password" autocomplete="new-password">
+                    <button type="submit" id="submitPasswordBtn">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-
-    <script src="./js/admin.js"></script>
     
+        <div class="admin-container" style="display: none;">
+            <h1>Админ панель</h1>
+    
+            <!-- Форма для добавления новостей и мероприятий -->
+            <form id="addContentForm" class="admin-form" enctype="multipart/form-data">
+                <label for="contentType">Тип контента:</label>
+                <select id="contentType" name="contentType">
+                    <option value="news">Новость</option>
+                    <option value="events">Мероприятие</option>
+                </select><br>
+                <label for="contentTitle">Заголовок:</label><br>
+                <input type="text" id="contentTitle" name="contentTitle"><br>
+                <label for="contentDescription">Описание:</label><br>
+                <textarea id="contentDescription" name="contentDescription"></textarea><br>
+                <label for="contentDate">Дата:</label><br>
+                <input type="datetime-local" id="contentDate" name="contentDate"><br>
+                <label for="contentPhoto">Фото:</label><br>
+                <input type="file" id="contentPhoto" name="contentPhoto"><br><br>
+                <button type="submit">Добавить</button>
+            </form>
+            <div class="all-news__admin">
+                <h2>Все новости</h2>
+                <div class="all-news-continer__admin">
+                </div>
+            </div>
+    
+            <div class="all-events__admin">
+                <h2>Все мероприятия</h2>
+                <div class="all-events-container__admin">
+                </div>
+            </div>
+        </div>
+    
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <h2 data-i18n="title">КГУ «Опорная школа (ресурсный центр) имени Ахмета Байтурсынулы»</h2>
+            <nav>
+                <ul>
+                    <li><a href="about.html" data-i18n="about">О нас</a></li>
+                    <li><a href="contacts.html" data-i18n="contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    <script src="./js/admin.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
-</html>

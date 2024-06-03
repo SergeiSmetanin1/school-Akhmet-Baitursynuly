@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitPasswordBtn = document.getElementById('submitPasswordBtn');
     const passwordForm = document.getElementById('passwordForm');
     const adminContainer = document.querySelector('.admin-container');
-    const correctPassword = '1234'; // Установите ваш пароль здесь
+    const correctPassword = ''; // Установите ваш пароль здесь
+    const allNewsContainer = document.querySelector('.all-news-continer__admin');
+    const allEventsContainer = document.querySelector('.all-events-container__admin');
+    
 
     modal.style.display = 'block';
 
@@ -69,53 +72,127 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             console.log(data);
             alert(data.message);
+            renderNewsEvents();
         } catch (error) {
             console.error('Error:', error);
             alert(`Error: ${error.message}`);
         }
     });
-    
 
-    document.getElementById('deleteContentForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const contentType = document.getElementById('deleteContentType').value;
-        const contentId = document.getElementById('contentId').value;
+   
 
-        try {
-            const response = await fetch(`/${contentType}/${contentId}`, {
-                method: 'DELETE'
-            });
-            const data = await response.json();
-            console.log(data);
-            alert(data.message);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    });
-
-    // Функция для отправки запроса на получение всех новостей
     async function getAllNews() {
         try {
             const response = await fetch('/all_news');
             const data = await response.json();
-            console.log('All News:', data);
+            return data;
         } catch (error) {
             console.error('Error:', error);
         }
     }
 
-    // Функция для отправки запроса на получение всех мероприятий
     async function getAllEvents() {
         try {
             const response = await fetch('/all_events');
             const data = await response.json();
             console.log('All Events:', data);
+            return data;
         } catch (error) {
             console.error('Error:', error);
         }
     }
 
     // Назначение обработчиков для кнопок получения списка новостей и мероприятий
-    document.getElementById('getAllNewsBtn').addEventListener('click', getAllNews);
-    document.getElementById('getAllEventsBtn').addEventListener('click', getAllEvents);
+
+    const renderNewsEvents = async () => {
+        allNewsContainer.innerHTML = '';
+        allEventsContainer.innerHTML = '';
+        const allNewsData = await getAllNews();
+        const allEventsData  = await getAllEvents();
+        console.log(allEventsData);
+
+        allNewsData.forEach(item => {
+            const card = `
+                <div class="all-news-card__admin">
+                    <img src="${item.photoUrl}" alt="">
+                    <h4>${item.title}</h4>
+                    <div class="all-news-btns__admin">
+                        <button class="delete-btn-admin" data-idNews="${item._id}">Удалить</button>
+                        <button class="view-btn-admin">Редактировать</button>
+                    </div>
+                </div>
+            `;
+    
+            allNewsContainer.insertAdjacentHTML('beforeend', card);
+        });
+        
+        allEventsData.forEach(item => {
+            const card = `
+                <div class="all-news-card__admin">
+                    <img src="${item.photoUrl}" alt="">
+                    <h4>${item.title}</h4>
+                    <div class="all-news-btns__admin">
+                        <button class="delete-btn-admin" data-idNews="${item._id}">Удалить</button>
+                        <button class="view-btn-admin">Редактировать</button>
+                    </div>
+                </div>
+            `;
+    
+            allEventsContainer.insertAdjacentHTML('beforeend', card);
+        });
+    }
+
+    const deleteAndVeiwNews = async (e) => {
+        const target = e.target;
+        const btnDelete = target.closest('.delete-btn-admin');
+    
+        if (btnDelete) {
+            const newsId = btnDelete.getAttribute('data-idNews'); // Изменение способа получения значения атрибута
+            try {
+                const response = await fetch(`/news/${newsId}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    alert(data.message); // Оповещение об успешном удалении
+                    renderNewsEvents(); // Обновление списка новостей
+                } else {
+                    throw new Error(data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert(`Error: ${error.message}`); // Оповещение об ошибке
+            }
+        }
+    }
+
+    const deleteAndVeiwEvents = async (e) => {
+        const target = e.target;
+        const btnDelete = target.closest('.delete-btn-admin');
+    
+        if (btnDelete) {
+            const newsId = btnDelete.getAttribute('data-idNews'); 
+            try {
+                const response = await fetch(`/events/${newsId}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    alert(data.message); 
+                    renderNewsEvents(); 
+                } else {
+                    throw new Error(data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert(`Error: ${error.message}`); 
+            }
+        }
+    }
+
+    allNewsContainer.addEventListener('click', deleteAndVeiwNews);
+    allEventsContainer.addEventListener('click', deleteAndVeiwEvents);
+    
+    renderNewsEvents();
+    
 });
