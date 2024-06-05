@@ -77,10 +77,10 @@ main {
 }
 
 .nav-menu a {
-    font-family: Bad Script;
-    font-size: 22px;
-    font-style: italic;
-    font-weight: 400;
+    font-family: Painter;
+    font-size: 30px;
+    /* font-style: italic; */
+    font-weight: 300;
     line-height: 39.42px;
     text-decoration: none;
     color: #000000;
@@ -112,7 +112,7 @@ main {
     border-bottom: 2px solid #FFFFFF;
 }
 
-.english {
+.russian {
     display: none;
 }
 
@@ -435,7 +435,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 50px;
-    width: 37.04%;
+    width: 40%;
 }
 
 .left-column {
