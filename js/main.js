@@ -1,6 +1,4 @@
-AOS.init({
-    duration: 1500
-});
+
 document.addEventListener('DOMContentLoaded', function() {
     const burgerMenu = document.getElementById('burger-menu');
     const mobileNav = document.querySelector('.mobile-nav');
