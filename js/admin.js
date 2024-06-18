@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitPasswordBtn = document.getElementById('submitPasswordBtn');
     const passwordForm = document.getElementById('passwordForm');
     const adminContainer = document.querySelector('.admin-container');
-    const correctPassword = '';
+    const correctPassword = ''; // Убедитесь, что вы установили правильный пароль
     const allNewsContainer = document.querySelector('.all-news-continer__admin');
     const allEventsContainer = document.querySelector('.all-events-container__admin');
 
@@ -80,21 +80,28 @@ document.addEventListener('DOMContentLoaded', () => {
     async function getAllNews() {
         try {
             const response = await fetch('/all_news');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch news: ${response.statusText}`);
+            }
             const data = await response.json();
             return data;
         } catch (error) {
             console.error('Error:', error);
+            alert(`Error: ${error.message}`);
         }
     }
 
     async function getAllEvents() {
         try {
             const response = await fetch('/all_events');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch events: ${response.statusText}`);
+            }
             const data = await response.json();
-            console.log('All Events:', data);
             return data;
         } catch (error) {
             console.error('Error:', error);
+            alert(`Error: ${error.message}`);
         }
     }
 
@@ -103,37 +110,38 @@ document.addEventListener('DOMContentLoaded', () => {
         allEventsContainer.innerHTML = '';
         const allNewsData = await getAllNews();
         const allEventsData = await getAllEvents();
-        console.log(allEventsData);
 
-        allNewsData.forEach(item => {
-            const card = `
-                <div class="all-news-card__admin">
-                    <img src="${item.photoUrl}" alt="">
-                    <h4>${item.title}</h4>
-                    <div class="all-news-btns__admin">
-                        <button class="delete-btn-admin" data-idNews="${item._id}">Удалить</button>
-                        <button class="change-btn-admin" data-idNews="${item._id}">Редактировать</button>
+        if (allNewsData) {
+            allNewsData.forEach(item => {
+                const card = `
+                    <div class="all-news-card__admin">
+                        <img src="${item.photoUrl}" alt="">
+                        <h4>${item.title}</h4>
+                        <div class="all-news-btns__admin">
+                            <button class="delete-btn-admin" data-idNews="${item._id}">Удалить</button>
+                            <button class="change-btn-admin" data-idNews="${item._id}">Редактировать</button>
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+                allNewsContainer.insertAdjacentHTML('beforeend', card);
+            });
+        }
 
-            allNewsContainer.insertAdjacentHTML('beforeend', card);
-        });
-
-        allEventsData.forEach(item => {
-            const card = `
-                <div class="all-news-card__admin">
-                    <img src="${item.photoUrl}" alt="">
-                    <h4>${item.title}</h4>
-                    <div class="all-news-btns__admin">
-                        <button class="delete-btn-admin" data-idEvent="${item._id}">Удалить</button>
-                        <button class="change-btn-admin" data-idEvent="${item._id}">Редактировать</button>
+        if (allEventsData) {
+            allEventsData.forEach(item => {
+                const card = `
+                    <div class="all-news-card__admin">
+                        <img src="${item.photoUrl}" alt="">
+                        <h4>${item.title}</h4>
+                        <div class="all-news-btns__admin">
+                            <button class="delete-btn-admin" data-idEvent="${item._id}">Удалить</button>
+                            <button class="change-btn-admin" data-idEvent="${item._id}">Редактировать</button>
+                        </div>
                     </div>
-                </div>
-            `;
-
-            allEventsContainer.insertAdjacentHTML('beforeend', card);
-        });
+                `;
+                allEventsContainer.insertAdjacentHTML('beforeend', card);
+            });
+        }
     }
 
     const formChange = async (id, type) => {
@@ -150,20 +158,18 @@ document.addEventListener('DOMContentLoaded', () => {
             item = allEvents.find(eventItem => eventItem._id === id);
         }
 
-        console.log(item);
-
         const formChange = `
             <form id="editForm">
-                    <button id="close-btn__editModal" class="close-btn__editModal">x</button>
-                    <input type="hidden" id="editId" value="${item._id}">
-                    <input type="hidden" id="editType" value="${type}">
-                    <label for="editTitle">Заголовок:</label><br>
-                    <input type="text" id="editTitle" name="editTitle" value="${item.title}"><br>
-                    <label for="editDescription">Описание:</label><br>
-                    <textarea id="editDescription" name="editDescription">${item.description}</textarea><br>
-                    ${type === 'events' ? `<label for="editDate">Дата:</label><br><input type="date" id="editDate" name="editDate" value="${item.date}"><br>` : ''}
-                    <button type="submit">Сохранить изменения</button>
-                    <button type="button" id="closeEditModal">Отмена</button>
+                <button id="close-btn__editModal" class="close-btn__editModal">x</button>
+                <input type="hidden" id="editId" value="${item._id}">
+                <input type="hidden" id="editType" value="${type}">
+                <label for="editTitle">Заголовок:</label><br>
+                <input type="text" id="editTitle" name="editTitle" value="${item.title}"><br>
+                <label for="editDescription">Описание:</label><br>
+                <textarea id="editDescription" name="editDescription">${item.description}</textarea><br>
+                ${type === 'events' ? `<label for="editDate">Дата:</label><br><input type="date" id="editDate" name="editDate" value="${item.date}"><br>` : ''}
+                <button type="submit">Сохранить изменения</button>
+                <button type="button" id="closeEditModal">Отмена</button>
             </form>
         `;
         editModal.innerHTML = formChange;
