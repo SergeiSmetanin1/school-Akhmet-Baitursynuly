@@ -108,29 +108,52 @@ app.post('/upload', upload.single('photo'), (req, res) => {
     });
 });
 
-// Добавление новости
-app.post('/news', async (req, res) => {
-    const { title, content, description, photoUrl } = req.body;
+// // Добавление новости
+// app.post('/news', async (req, res) => {
+//     const { title, content, description, photoUrl } = req.body;
 
+//     try {
+//         const news = new News({ title, content, description, photoUrl });
+//         await news.save();
+//         res.status(201).json({ message: 'Новость успешно добавлена' });
+//     } catch (err) {
+//         res.status(400).json({ error: err.message });
+//     }
+// });
+
+// // Добавление мероприятия
+// app.post('/events', async (req, res) => {
+//     const { title, description, photoUrl, date } = req.body;
+
+//     try {
+//         const event = new Event({ title, description, photoUrl, date });
+//         await event.save();
+//         res.status(201).json({ message: 'Мероприятие успешно добавлено' });
+//     } catch (err) {
+//         res.status(400).json({ error: err.message });
+//     }
+// });
+
+app.post('/news', async (req, res) => {
     try {
-        const news = new News({ title, content, description, photoUrl });
+        const { title, description, photoUrl } = req.body;
+        const news = new News({ title, description, photoUrl });
         await news.save();
-        res.status(201).json({ message: 'Новость успешно добавлена' });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.json({ message: 'News added successfully!' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
-// Добавление мероприятия
+// Маршрут для добавления мероприятий
 app.post('/events', async (req, res) => {
-    const { title, description, photoUrl, date } = req.body;
-
     try {
+        const { title, description, photoUrl, date } = req.body;
         const event = new Event({ title, description, photoUrl, date });
         await event.save();
-        res.status(201).json({ message: 'Мероприятие успешно добавлено' });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.json({ message: 'Event added successfully!' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
