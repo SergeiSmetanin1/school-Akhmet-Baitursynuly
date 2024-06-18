@@ -993,7 +993,6 @@ main {
 }
 
 .close-btn img {
-    /* filter: brightness(0) saturate(100%) invert(10%) sepia(91%) saturate(6136%) hue-rotate(32deg) brightness(98%) contrast(130%); */
     filter: brightness(0) saturate(100%) invert(94%) sepia(9%) saturate(20%) hue-rotate(315deg) brightness(80%) contrast(80%);
     transform: rotate(180deg);
     width: 100%;
@@ -1300,19 +1299,17 @@ main {
 }
 
 .delete-btn-admin {
-    border-radius: 10px 0 0 10px;
     border: none;
     border-right: 1px solid white;
 }
 
-.view-btn-admin {
-    border-radius: 0 10px 10px 0;
+.change-btn-admin {
     border: none;
     border-left: 1px solid white;
 }
 
 .modal {
-    display: none;
+    /* display: none; */
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -1377,6 +1374,42 @@ main {
 .modal button:hover, .modal button:active {
     background-color: #AE4141;
 }
+
+.edit-form {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.edit-form input, .edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.edit-form button {
+    padding: 10px 20px;
+    background-color: #A80808;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    cursor: pointer;
+}
+
+
 
 /* /admin */
 
@@ -1809,6 +1842,14 @@ main {
     .news-detail-image {
         width: 100%;
     }
+
+    .edit-form {
+        width: 90%;
+    }
+    
+    .admin-container h1 {
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -1993,6 +2034,10 @@ main {
     .footer-container li,
     a {
         font-size: 12px;
+    }
+
+    .admin-container h1 {
+        font-size: 26px;
     }
 }
 

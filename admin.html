@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -56,18 +56,19 @@
     <main>
         <div id="passwordModal" class="modal">
             <div class="modal-content">
-                <h2>Enter Password</h2>
+                <h2>Введите пароль</h2>
                 <form id="passwordForm">
-                    <input type="text" id="usernameInput" placeholder="Username" class="hide" autocomplete="username">
-                    <input type="password" id="passwordInput" placeholder="Password" autocomplete="new-password">
-                    <button type="submit" id="submitPasswordBtn">Submit</button>
+                    <input type="text" id="usernameInput" placeholder="Имя пользователя" class="hide"
+                        autocomplete="username">
+                    <input type="password" id="passwordInput" placeholder="Пароль" autocomplete="new-password">
+                    <button type="submit" id="submitPasswordBtn">Войти</button>
                 </form>
             </div>
         </div>
-    
+
         <div class="admin-container" style="display: none;">
-            <h1>Админ панель</h1>
-    
+            <h1>Административная панель</h1>
+
             <!-- Форма для добавления новостей и мероприятий -->
             <form id="addContentForm" class="admin-form" enctype="multipart/form-data">
                 <label for="contentType">Тип контента:</label>
@@ -80,24 +81,43 @@
                 <label for="contentDescription">Описание:</label><br>
                 <textarea id="contentDescription" name="contentDescription"></textarea><br>
                 <label for="contentDate">Дата:</label><br>
-                <input type="datetime-local" id="contentDate" name="contentDate"><br>
+                <input type="date" id="contentDate" name="contentDate"><br>
                 <label for="contentPhoto">Фото:</label><br>
                 <input type="file" id="contentPhoto" name="contentPhoto"><br><br>
                 <button type="submit">Добавить</button>
             </form>
+
+            <!-- Модальное окно для редактирования -->
+            <div id="editModal" class="edit-form hide">
+                <!-- <button id="close-btn__editModal" class="close-btn__editModal">x</button>
+                <form id="editForm">
+                    <input type="hidden" id="editId">
+                    <input type="hidden" id="editType">
+                    <label for="editTitle">Заголовок:</label><br>
+                    <input type="text" id="editTitle" name="editTitle"><br>
+                    <label for="editDescription">Описание:</label><br>
+                    <textarea id="editDescription" name="editDescription"></textarea><br>
+                    <button type="submit">Сохранить изменения</button>
+                    <button type="button" id="closeEditModal">Отмена</button>
+                </form> -->
+            </div>
+
+            <!-- Контейнеры для всех новостей и мероприятий -->
             <div class="all-news__admin">
                 <h2>Все новости</h2>
                 <div class="all-news-continer__admin">
+                    <!-- Здесь будут отображаться новости -->
                 </div>
             </div>
-    
+
             <div class="all-events__admin">
                 <h2>Все мероприятия</h2>
                 <div class="all-events-container__admin">
+                    <!-- Здесь будут отображаться мероприятия -->
                 </div>
             </div>
         </div>
-    
+
     </main>
     <footer class="footer">
         <div class="footer-container">
@@ -113,3 +133,5 @@
     <script src="./js/admin.js"></script>
     <script src="js/main.js"></script>
 </body>
+
+</html>

@@ -108,36 +108,33 @@ app.post('/upload', upload.single('photo'), (req, res) => {
     });
 });
 
-// Добавление новости
 app.post('/news', async (req, res) => {
-    const { title, content, description, photoUrl } = req.body;
-
     try {
-        const news = new News({ title, content, description, photoUrl });
+        const { title, description, photoUrl } = req.body;
+        const news = new News({ title, description, photoUrl });
         await news.save();
-        res.status(201).json({ message: 'Новость успешно добавлена' });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.json({ message: 'Новость успешно добавлена!' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
-// Добавление мероприятия
+// Маршрут для добавления мероприятий
 app.post('/events', async (req, res) => {
-    const { title, description, photoUrl, date } = req.body;
-
     try {
+        const { title, description, photoUrl, date } = req.body;
         const event = new Event({ title, description, photoUrl, date });
         await event.save();
-        res.status(201).json({ message: 'Мероприятие успешно добавлено' });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.json({ message: 'Событие успешно добавлено!' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 
 // Получение всех новостей с включением даты
 app.get('/all_news', async (req, res) => {
     try {
-        const news = await News.find().sort({ date: -1 }); // Сортировка по убыванию даты
+        const news = await News.find().sort({ date: -1 }); 
         res.json(news);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -185,6 +182,38 @@ app.delete('/events/:id', async (req, res) => {
         const photoPath = event.photoUrl.replace('/uploads/', '');
         fs.unlinkSync(path.join(__dirname, 'uploads', photoPath));
         res.json({ message: 'Мероприятие успешно удалено' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Изменение новости
+app.put('/news/:id', async (req, res) => {
+    const newsId = req.params.id;
+    const { title, content, description, photoUrl } = req.body;
+
+    try {
+        const news = await News.findByIdAndUpdate(newsId, { title, content, description, photoUrl }, { new: true });
+        if (!news) {
+            return res.status(404).json({ error: 'Новость не найдена' });
+        }
+        res.json({ message: 'Новость успешно обновлена', news });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Изменение мероприятия
+app.put('/events/:id', async (req, res) => {
+    const eventId = req.params.id;
+    const { title, description, photoUrl, date } = req.body;
+
+    try {
+        const event = await Event.findByIdAndUpdate(eventId, { title, description, photoUrl, date }, { new: true });
+        if (!event) {
+            return res.status(404).json({ error: 'Мероприятие не найдено' });
+        }
+        res.json({ message: 'Мероприятие успешно обновлено', event });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
