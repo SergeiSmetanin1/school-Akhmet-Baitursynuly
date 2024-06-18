@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formChange = `
             <form id="editForm">
-                <button id="close-btn__editModal" class="close-btn__editModal">x</button>
                 <input type="hidden" id="editId" value="${item._id}">
                 <input type="hidden" id="editType" value="${type}">
                 <label for="editTitle">Заголовок:</label><br>
@@ -168,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label for="editDescription">Описание:</label><br>
                 <textarea id="editDescription" name="editDescription">${item.description}</textarea><br>
                 ${type === 'events' ? `<label for="editDate">Дата:</label><br><input type="date" id="editDate" name="editDate" value="${item.date}"><br>` : ''}
-                <button type="submit">Сохранить изменения</button>
-                <button type="button" id="closeEditModal">Отмена</button>
+                <button type="submit">Сохранить</button>
+                <button type="button" id="close-btn__editModal">Отмена</button>
             </form>
         `;
         editModal.innerHTML = formChange;

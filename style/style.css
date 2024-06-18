@@ -1381,22 +1381,35 @@ main {
     top: 50%;
     left: 50%;
     background-color: #f9f9f9;
-    padding: 100px;
+    padding: 20px;
     border-radius: 10px;
     border: 1px solid #000;
 }
 
-.close-btn__editModal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
+.edit-form input, .edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
 }
+
+.edit-form button {
+    padding: 10px 20px;
+    background-color: #A80808;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    cursor: pointer;
+}
+
+
 
 /* /admin */
 
@@ -1829,6 +1842,14 @@ main {
     .news-detail-image {
         width: 100%;
     }
+
+    .edit-form {
+        width: 90%;
+    }
+    
+    .admin-container h1 {
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -2013,6 +2034,10 @@ main {
     .footer-container li,
     a {
         font-size: 12px;
+    }
+
+    .admin-container h1 {
+        font-size: 26px;
     }
 }
 
