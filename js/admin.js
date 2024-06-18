@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitPasswordBtn = document.getElementById('submitPasswordBtn');
     const passwordForm = document.getElementById('passwordForm');
     const adminContainer = document.querySelector('.admin-container');
-    const correctPassword = ''; // Убедитесь, что вы установили правильный пароль
+    const correctPassword = '1234'; // Убедитесь, что вы установили правильный пароль
     const allNewsContainer = document.querySelector('.all-news-continer__admin');
     const allEventsContainer = document.querySelector('.all-events-container__admin');
 
