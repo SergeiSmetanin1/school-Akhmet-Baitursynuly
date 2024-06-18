@@ -190,6 +190,38 @@ app.delete('/events/:id', async (req, res) => {
     }
 });
 
+// Изменение новости
+app.put('/news/:id', async (req, res) => {
+    const newsId = req.params.id;
+    const { title, content, description, photoUrl } = req.body;
+
+    try {
+        const news = await News.findByIdAndUpdate(newsId, { title, content, description, photoUrl }, { new: true });
+        if (!news) {
+            return res.status(404).json({ error: 'Новость не найдена' });
+        }
+        res.json({ message: 'Новость успешно обновлена', news });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Изменение мероприятия
+app.put('/events/:id', async (req, res) => {
+    const eventId = req.params.id;
+    const { title, description, photoUrl, date } = req.body;
+
+    try {
+        const event = await Event.findByIdAndUpdate(eventId, { title, description, photoUrl, date }, { new: true });
+        if (!event) {
+            return res.status(404).json({ error: 'Мероприятие не найдено' });
+        }
+        res.json({ message: 'Мероприятие успешно обновлено', event });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // Middleware для обработки ошибок
 app.use((err, req, res, next) => {
     console.error(err.stack);
