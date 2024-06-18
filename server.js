@@ -29,7 +29,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, '')));
 
 const currentPath = (page) => {
-    return path.resolve(__dirname, `${page}.html`);
+    app.use(express.static(path.join(__dirname, 'diploma')));
 };
 
 // Модель данных для новостей
