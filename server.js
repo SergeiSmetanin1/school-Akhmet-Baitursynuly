@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json());
 
 // Настройка CORS
-const allowedOrigins = ['https://akhmet-baitursynuly-school-2571435000c8.herokuapp.com/'];
+const allowedOrigins = ['https://akhmet-baitursynuly-school-2571435000c8.herokuapp.com'];
 
 const corsOptions = {
     origin: function (origin, callback) {
