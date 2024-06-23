@@ -1,0 +1,13 @@
+# Node.js и npm
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Локальные файлы конфигурации
+.env
+
+# Папка с временными или генерируемыми файлами
+uploads/
+
+# Другие временные файлы
+*.log

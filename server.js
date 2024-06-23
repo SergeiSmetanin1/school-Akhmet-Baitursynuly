@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 // Подключение к MongoDB без устаревших параметров
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
     })
@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json());
 
 // Настройка CORS
-const allowedOrigins = ['https://baitursinuly-school-d33a20b23624.herokuapp.com'];
+const allowedOrigins = ['https://akhmet-baitursynuly-school-2571435000c8.herokuapp.com'];
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -120,6 +120,7 @@ app.post('/upload', upload.single('photo'), (req, res) => {
     });
 });
 
+// Маршрут для добавления новостей
 app.post('/news', async (req, res) => {
     try {
         const { title, description, photoUrl } = req.body;
