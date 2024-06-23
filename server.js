@@ -21,8 +21,20 @@ mongoose.connect(process.env.MONGODB_URI)
 // Middleware для обработки JSON
 app.use(express.json());
 
-// Middleware для разрешения CORS
-app.use(cors());
+// Настройка CORS
+const allowedOrigins = ['https://baitursinuly-school-d33a20b23624.herokuapp.com'];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+};
+
+app.use(cors(corsOptions));
 
 // Устанавливаем статические файлы
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
